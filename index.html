@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Scrabble word finder</title>
+    <style type="text/css">
+      .words {
+        font-family: monospace;
+        white-space: pre;
+      }
+      #lookupForm {
+        border-bottom: 1px solid black;
+        border-collapse: collapse;
+        padding-bottom: 1em;
+        margin-bottom: 1em;
+      }
+      #clear {
+        border: none;
+        display: inline-block;
+        background-color: white;
+        text-decoration: underline;
+        font-size: x-large;
+      }
+      body {
+        font-size: x-large;
+        background-color: white;
+        padding: 1em;
+      }
+      td {
+        padding-right: 1em;
+        vertical-align: top;
+      }
+    </style>
+    <script type="text/javascript" src="./words.js"></script>
+    <script type="text/javascript" src="./scrabble-lookup.js"></script>
+  </head>
+  <body>
+    <div>Scrabble word finder</div>
+    <div id="lookupForm">
+      <form name="lookup" onsubmit="lookupWord(this.letters.value); return false;">
+        <div>
+          <input type="text" size="10" id='entry' name="letters" onkeypress="if (event.key === 'Enter') this.form.go.click();" />
+          &nbsp;
+          <input type="submit" value="Go" name="go" />
+          &nbsp;
+          <button id="clear" onclick="this.form.letters.value = ''; this.form.letters.focus()">clear</button>
+        </div>
+        <!--
+        <div>
+          <label>exclude 3:
+            <input type="checkbox" name="no3" onchange="toggleWords3(this.checked);"/>
+          </label>
+        </div>
+        -->
+      </form>
+    </div>
+    <table><tr>
+    <td><div id="words3" class="words"></div></td>
+    <td><div id="words4" class="words"></div></td>
+    <td><div id="words"  class="words"></div></td>
+    </tr></table>
+    <script type="text/javascript">
+      var words3Div = document.getElementById('words3');
+      var words4Div = document.getElementById('words4');
+      var wordsDiv = document.getElementById('words');
+      document.getElementById('entry').focus();
+    </script>
+  </body>
+</html>
